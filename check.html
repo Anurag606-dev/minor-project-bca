@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Cards</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --primarycolor: #800020;
+            --secondarycolor: #d2b48c;
+            --whitecolor: #fff;
+            --blackColor: #222;
+            --softGreenColor: #f4f1e1;
+            --darkGreyColor: #d9f2ee;
+            --greycolor: #f5f5f5;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--whitecolor);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: var(--primarycolor);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            height: 60px;
+        }
+
+        .main-content {
+            text-align: center;
+            margin: 50px auto;
+            padding: 20px;
+            max-width: 800px;
+            background-color: var(--softGreenColor);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 370px;
+        }
+
+        .gift-card-img-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 25%;
+            margin-bottom: 30px;
+            width: 100%;
+            justify-content: space-between;
+            padding: 10px;
+            margin: auto;
+        }
+
+        .gift-card-img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gift-card-img:hover {
+            transform: scale(1.05);
+        }
+
+        .gift-card-options {
+            margin: 30px 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .gift-card-options select, .gift-card-options input {
+            padding: 10px;
+            margin: 20px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .gift-card-options button {
+            background-color: var(--primarycolor);
+            color: var(--whitecolor);
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .gift-card-options button:hover {
+            background-color: var(--secondarycolor);
+            color: var(--blackColor);
+            font-weight: bold;
+        }
+
+        .btn {
+            margin-top: 15px;
+            width: 30%;
+            height: 50px;
+            padding: 12px 20px;
+            font-size: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 8px;
+            background-color: var(--primarycolor);
+            color: white;
+        }
+
+        /* Popup Styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: var(--whitecolor);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .popup button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: var(--primarycolor);
+            color: var(--whitecolor);
+            border: none;
+            border-radius: 5px;
+        }
+
+        .popup button:hover {
+            background-color: var(--secondarycolor);
+            color: var(--blackColor);
+        }
+
+        .popup .home-btn {
+            background-color: var(--primarycolor);
+            margin-top: 10px;
+        }
+
+        .popup button:hover, .home-btn:hover {
+            background-color: var(--secondarycolor);
+            color: var(--blackColor);
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+            .main-content {
+                margin: 20px;
+                padding: 15px;
+                max-width: 100%;
+            }
+
+            .gift-card-img-container {
+                gap: 15%;
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+
+            .gift-card-options {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .gift-card-options select, .gift-card-options input, .gift-card-options button {
+                width: 80%;
+                max-width: 350px;
+                margin: 10px 0;
+            }
+
+            .btn {
+                width: 80%;
+                max-width: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 15px;
+            }
+
+            .gift-card-options select, .gift-card-options input, .gift-card-options button {
+                width: 90%;
+                max-width: 320px;
+                font-size: 14px;
+            }
+
+            .btn {
+                width: 90%;
+                max-width: 320px;
+            }
+
+            .gift-card-img-container {
+                gap: 10%;
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+        }
+        html {
+    font-size: 16px; /* Default base */
+}
+@media (max-width: 768px) {
+    html {
+        font-size: 14px; /* Slightly smaller text for smaller screens */
+    }
+}
+@media (max-width: 480px) {
+    html {
+        font-size: 12px; /* Smaller text for very small screens */
+    }
+}
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Gift Cards</h1>
+
+</header>
+
+<div class="main-content">
+    <div class="gift-card-img-container">
+        <img class="gift-card-img" src="gift card 1.png" alt="Gift Card Image 1">
+        <img class="gift-card-img" src="gift card 2.png" alt="Gift Card Image 2">
+    </div>
+    <p style="font-weight: bold;">Choose your desired gift card value and let someone special enjoy an unforgettable dining experience.</p>
+
+    <div class="gift-card-options">
+        <h5 style="font-weight: bold;">Choose Your Gift Card Amount</h5>
+        <select id="giftAmount">
+            <option value="100">₹100</option>
+            <option value="150">₹150</option>
+            <option value="200">₹200</option>
+            <option value="300">₹300</option>
+            <option value="500">₹500</option>
+        </select>
+
+        <h5 style="font-weight: bold;">Enter a Custom Amount</h5>
+        <input type="number" id="customAmount" placeholder="Enter Amount" min="100" />
+
+        <button class="btn" onclick="showCheckoutPopup()">Buy Now</button>
+    </div>
+</div>
+<!-- footer -->
+<footer>
+    <p>&copy; 2024 our Restaurant - All Rights Reserved</p>
+</footer>
+
+<!-- Checkout Popup -->
+<div id="checkoutPopup" class="popup">
+    <div class="popup-content">
+        <h3>Checkout</h3>
+        <p>You've selected a gift card <span id="checkoutAmount"></span>.</p>
+        <p>Proceed to payment to complete your purchase.</p>
+        <button onclick="showConfirmPopup()">Proceed to Payment</button>
+        <button onclick="closeCheckoutPopup()">Cancel</button>
+    </div>
+</div>
+
+<!-- Confirm Payment Popup -->
+<div id="confirmPopup" class="popup">
+    <div class="popup-content">
+        <h3>Confirm Checkout</h3>
+        <p>Are you sure you want to proceed with the payment <span id="checkoutAmount"></span>?</p>
+        <button onclick="finalizeCheckout()">Yes, Confirm</button>
+        <button onclick="closeConfirmPopup()">No, Go Back</button>
+    </div>
+</div>
+<div id="paymentPopup" class="popup">
+    <div class="popup-content">
+        <h3>Payment Processed</h3>
+        <p>Thank you for your payment! Your gift card has been successfully purchased.</p>
+        <button onclick="closePaymentPopup()">OK</button>
+    </div>
+</div>
+
+
+<script>
+    function showCheckoutPopup() {
+        var giftAmount = document.getElementById('giftAmount').value;
+        var customAmount = document.getElementById('customAmount').value;
+        var selectedAmount = customAmount ? customAmount : giftAmount;
+
+        if (customAmount && customAmount < 100) {
+            alert("Amount should be ₹100 or higher.");
+        } else {
+            document.getElementById('checkoutAmount').textContent = selectedAmount;
+            document.getElementById('checkoutPopup').style.display = 'flex';
+        }
+    }
+
+    function closeCheckoutPopup() {
+        document.getElementById('checkoutPopup').style.display = 'none';
+    }
+
+    function showConfirmPopup() {
+        document.getElementById('checkoutPopup').style.display = 'none';
+        document.getElementById('confirmPopup').style.display = 'flex';
+    }
+
+    function closeConfirmPopup() {
+        document.getElementById('confirmPopup').style.display = 'none';
+    }
+
+    function finalizeCheckout() {
+        alert("Thank you for your purchase! Proceeding to payment...");
+        closeConfirmPopup();
+    }
+    function showCheckoutPopup() {
+        var giftAmount = document.getElementById('giftAmount').value;
+        var customAmount = document.getElementById('customAmount').value;
+        var selectedAmount = customAmount ? customAmount : giftAmount;
+
+        if (customAmount && customAmount < 100) {
+            alert("Amount should be ₹100 or higher.");
+        } else {
+            document.getElementById('checkoutAmount').textContent = selectedAmount;
+            document.getElementById('checkoutPopup').style.display = 'flex';
+        }
+    }
+
+    function closeCheckoutPopup() {
+        document.getElementById('checkoutPopup').style.display = 'none';
+    }
+
+    function showConfirmPopup() {
+        document.getElementById('checkoutPopup').style.display = 'none';
+        document.getElementById('confirmPopup').style.display = 'flex';
+    }
+
+    function closeConfirmPopup() {
+        document.getElementById('confirmPopup').style.display = 'none';
+    }
+
+    function finalizeCheckout() {
+        document.getElementById('confirmPopup').style.display = 'none';
+        document.getElementById('paymentPopup').style.display = 'flex';
+    }
+
+    function closePaymentPopup() {
+        document.getElementById('paymentPopup').style.display = 'none';
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="./contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+   --primarycolor:  #800020;
+   --secondarycolor:#d2b48c;
+   --whitecolor: #fff;
+   --blackColor:#222;
+   --softGreenColor:#f4f1e1;
+   --darkGreyColor:#d9f2ee;
+   --greycolor: #f5f5f5;
+}
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   background: var(--greycolor);
+   font-family: sans-serif;
+}
+
+header {
+   background: var(--primarycolor);
+   color: var(--whitecolor);
+   padding: 10px 0;
+   text-align: center;
+   height: 130px;
+}
+
+nav ul {
+   list-style: none;
+   padding: 0;
+   align-items: center;
+   margin-top: 30px;
+   text-align: center;
+}
+
+nav ul li {
+   display: inline-block;
+   margin: 0 15px;
+}
+
+nav ul li a {
+   color: var(--whitecolor);
+   text-decoration: none;
+   font-size: 16px;
+   padding: 10px 15px;
+   transition: background-color 0.3s ease, color 0.3s ease;
+   border-radius: 50px;
+}
+
+nav ul li a:hover {
+   background-color: var(--secondarycolor);
+   color: var(--blackColor);
+   transform: translateY(-2px);
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#section-wrapper {
+   width: 100%;
+   padding: 10px;
+}
+
+.box-wrapper {
+   position: relative;
+   display: table;
+   width: 90%;
+   max-width: 1100px;
+   margin: auto;
+   margin-top: 35px;
+   border-radius: 30px;
+}
+
+.info-wrap {
+   width: 35%;
+   min-width: 300px;
+   height: 551px;
+   padding: 40px;
+   float: left;
+   border-radius: 30px 0 0 30px;
+   background: var(--primarycolor);
+   color: var(--whitecolor);
+}
+
+.info-title {
+   font-size: 28px;
+   text-align: left;
+   letter-spacing: 0.5px;
+}
+
+.info-sub-title {
+   font-size: 18px;
+   font-weight: 300;
+   margin-top: 17px;
+   letter-spacing: 0.5px;
+   line-height: 26px;
+}
+
+.info-details {
+   list-style: none;
+   margin: 60px 0;
+}
+
+.info-details li {
+   margin-top: 25px;
+   font-size: 18px;
+   color: var(--whitecolor);
+}
+
+.info-details li i {
+   background-color: var(--secondarycolor);
+   padding: 12px;
+   border-radius: 50%;
+   margin-right: 5px;
+   color: var(--blackColor);
+}
+
+.info-details li a {
+   color: var(--whitecolor);
+   text-decoration: none;
+}
+
+.info-details li a:hover {
+   color: var(--secondarycolor);
+}
+
+.social-icons {
+   list-style: none;
+   text-align: center;
+   margin: 20px 0;
+}
+
+.social-icons li {
+   display: inline-block;
+}
+
+.social-icons li i {
+   background-color: var(--secondarycolor);
+   color: var(--blackColor);
+   padding: 15px;
+   font-size: 20px;
+   border-radius: 22px;
+   margin: 0 5px;
+   cursor: pointer;
+   transition: all 0.5s;
+}
+
+.social-icons li i:hover {
+   background-color: var(--softGreenColor);
+   color: var(--primarycolor);
+}
+
+.form-wrap {
+   width: 60%;
+   float: right;
+   padding: 45px 30px 40px 30px;
+   border-radius: 0 25px 25px 0;
+   background: #f7f9fc;
+   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+   text-align: left;
+   margin-left: 24px;
+   font-size: 30px;
+   letter-spacing: 0.4px;
+   color: var(--primarycolor);
+}
+
+.form-fields {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 20px;
+   padding: 20px 10px 10px 10px;
+}
+
+.form-fields input,
+.form-fields textarea {
+   border: 1px solid #ddd;
+   outline: none;
+   background: #fff;
+   font-size: 18px;
+   color: #444;
+   padding: 18px 12px;
+   border-radius: 8px;
+   width: 100%;
+   box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-fields textarea {
+   height: 160px;
+   resize: vertical;
+}
+
+.form-group {
+   width: 48%;
+   padding: 10px;
+   border-radius: 12px;
+   box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.05), inset -5px -5px 10px rgba(255, 255, 255, 0.8);
+}
+
+.form-fields .form-group:last-child {
+   width: 100%;
+}
+
+.submit-button {
+   width: 96%;
+   height: 60px;
+   margin: 0 12px;
+   border-radius: 30px;
+   font-size: 20px;
+   font-weight: 700;
+   outline: none;
+   cursor: pointer;
+   color: var(--whitecolor);
+   text-align: center;
+   background: var(--primarycolor);
+   box-shadow: 3px 8px 8px #b1b1b1, -3px -3px 8px #ffffff;
+   transition: 0.5s;
+   border: none;
+}
+
+.submit-button:hover {
+   background: var(--secondarycolor);
+   color: var(--blackColor);
+}
+
+footer {
+   text-align: center;
+   padding: 10px 0;
+   background: var(--primarycolor);
+   color: var(--whitecolor);
+   position: relative;
+   bottom: 0;
+   width: 100%;
+}
+/* Responsive Styles */
+@media screen and (max-width: 1200px) {
+   .info-wrap {
+      width: 100%;
+      min-width: unset;
+      height: auto;
+      float: none;
+      border-radius: 30px 30px 0 0;
+   }
+
+   .form-wrap {
+      width: 100%;
+      float: none;
+      border-radius: 0 0 30px 30px;
+   }
+
+   .box-wrapper {
+      width: 95%;
+   }
+}
+
+@media screen and (max-width: 768px) {
+   header {
+      height: auto;
+      padding: 20px 10px;
+   }
+
+   nav ul li {
+      display: inline-flex;
+      margin: 10px 0;
+   }
+
+   nav ul li a {
+      font-size: 14px;
+      padding: 8px 10px;
+
+   }
+
+   .info-title {
+      font-size: 22px;
+   }
+
+   .info-sub-title,
+   .info-details li {
+      font-size: 16px;
+   }
+
+   .form-title {
+      font-size: 24px;
+      margin-left: 10px;
+   }
+
+   .form-fields {
+      gap: 15px;
+   }
+
+   .form-fields input,
+   .form-fields textarea {
+      font-size: 16px;
+      padding: 15px 10px;
+   }
+
+   .submit-button {
+      font-size: 18px;
+      height: 50px;
+   }
+}
+
+@media screen and (max-width: 480px) {
+   .info-wrap {
+      padding: 20px;
+   }
+
+   .form-wrap {
+      padding: 20px;
+   }
+
+   nav ul {
+      margin-top: 15px;
+   }
+
+   .social-icons li i {
+      padding: 10px;
+      font-size: 18px;
+   }
+
+   .submit-button {
+      font-size: 16px;
+      height: 45px;
+   }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Contact Us</h1>
+        <nav>
+            <ul>
+                <li><a href="main.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="review.html">Reviews</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="section-wrapper">
+        <div class="box-wrapper">
+            <div class="info-wrap">
+                <h2 class="info-title"> Contact Information </h2>
+                <h3 class="info-sub-title"> Fill up the form, and our team will get back to you within 24 hours</h3>
+                <ul class="info-details">
+                    <li>
+                        <i class="fas fa-phone-alt"></i>
+                        <span>Phone:</span> <a href="tel:+123456789">1234567890</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-globe"></i>
+                        <span>Website:</span> <a href="https://www.yoursite.com">www.yoursite.com</a> 
+                    </li>
+                </ul>
+                <ul class="social-icons">
+                    <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                </ul>
+            </div>
+            <div class="form-wrap">
+                <form action="https://api.web3forms.com/submit" method="POST" onsubmit="handleSubmit(event)">
+                    <input type="hidden" name="access_key" value="">
+                    
+                    <h2 class="form-title">Send us a message</h2>
+                    <div class="form-fields">
+                        <div class="form-group">
+                            <input type="text" name="first_name" class="fname" required placeholder="First Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="last_name" class="lname" required placeholder="Last Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" class="email" required placeholder="Email Address">
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" class="phone" required placeholder="Phone No">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" class="message" required placeholder="Write your message"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-button">Send message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2025 Our Restaurant. All rights reserved.</p>
+    </footer>
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="contact.js"></script>
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevents the default form submission
+
+            // Fetch form data and submit manually
+            const formData = new FormData(event.target);
+            fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    removeInput();
+                    // Redirect to the success page
+                    window.location.href = "success.html";
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+        }
+
+        function removeInput() {
+            document.querySelector(".fname").value = "";
+            document.querySelector(".lname").value = "";
+            document.querySelector(".email").value = "";
+            document.querySelector(".phone").value = "";
+            document.querySelector(".message").value = "";
+            console.log("All input fields are cleared.");
+        }
+    </script>
+</body>
+</html>

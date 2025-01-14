@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Dine In</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        /* Custom CSS */
+        :root {
+            --primarycolor: #800020;
+            --secondarycolor: #d2b48c;
+            --whitecolor: #fff;
+            --blackColor: #222;
+            --softGreenColor: #f4f1e1;
+            --darkGreyColor: #d9f2ee;
+            --greycolor: #f5f5f5;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--softGreenColor);
+        }
+        .header {
+            background-color: var(--primarycolor);
+            color: white;
+            height: 100px;
+            position: relative;
+        }
+
+        .header .text-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+            border-radius: 0.25rem;
+        }
+        .form-control {
+            border-radius: 0.5rem;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 0.5rem;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+        }
+        h2, h5 {
+            font-weight: bold;
+        }
+        .container {
+            max-width: 1200px;
+        }
+        .card-body {
+            padding: 1.5rem;
+        }
+        .text-center {
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            padding: 8px;
+            background-color: var(--primarycolor);
+            color: white;
+        }
+        .btn {
+            background-color: var(--primarycolor);
+            color: white;
+        }
+        .btn:hover {
+            background-color: var(--secondarycolor);
+            color: var(--blackColor);
+            font-weight: bold;
+        }
+
+        /* Popup Styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background-color: var(--whitecolor);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .popup button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: var(--primarycolor);
+            color: var(--whitecolor);
+            border: none;
+            border-radius: 5px;
+        }
+        .popup button:hover {
+            background-color: var(--secondarycolor);
+            color: var(--blackColor);
+        }
+        @media print {
+        body * {
+            visibility: hidden;
+        }
+        #receiptContent, #receiptContent * {
+            visibility: visible;
+        }
+        
+        /* Styling the receipt container */
+        #receiptContent {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100%;
+            font-family: 'Arial', sans-serif;
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Logo at the top of the receipt */
+        #receiptContent .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #receiptContent .logo img {
+            max-width: 150px;
+            height: auto;
+        }
+
+        /* Receipt Header */
+        #receiptContent h4 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-align: center;
+            color: var(--primarycolor); /* Using website color */
+        }
+
+        /* Receipt Details */
+        #receiptContent p {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        /* Footer in the print */
+        #receiptContent .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--primarycolor); /* Matching website footer color */
+        }
+
+        /* Hide other elements (e.g., buttons, header, footer) */
+        button, footer, .header, .container {
+            display: none;
+        }
+    }
+    @media print {
+            body * {
+                visibility: hidden;
+            }
+            #receiptContent, #receiptContent * {
+                visibility: visible;
+            }
+            
+            /* Styling the receipt container */
+            #receiptContent {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                width: 100%;
+                font-family: 'Arial', sans-serif;
+                background-color: white;
+                padding: 20px;
+                border: 1px solid #ddd;
+                box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+            }
+
+            /* Logo at the top of the receipt */
+            #receiptContent .logo {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            #receiptContent .logo img {
+                max-width: 150px;
+                height: auto;
+            }
+
+            /* Receipt Header */
+            #receiptContent h4 {
+                font-size: 24px;
+                margin-bottom: 10px;
+                text-align: center;
+                color: var(--primarycolor); /* Using website color */
+            }
+
+            /* Receipt Details */
+            #receiptContent p {
+                font-size: 16px;
+                margin: 5px 0;
+            }
+
+            /* Footer in the print */
+            #receiptContent .footer {
+                text-align: center;
+                margin-top: 20px;
+                font-size: 14px;
+                color: var(--primarycolor); /* Matching website footer color */
+            }
+
+            /* Hide other elements (e.g., buttons, header, footer) */
+            button, footer, .header, .container {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="header">
+        <div class="container text-center">
+            <h1 style="font-size: 2rem;">Golden fork</h1>
+            <p>Enjoy a delightful dining experience with us.</p>
+        </div>
+    </header>
+
+    <!-- Dine-In Options Section -->
+    <section class="container my-5">
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <div class="card">
+                    <img src="image/in-dine.png" class="card-img-top" alt="Indoor Dining">
+                    <div class="card-body">
+                        <h5 class="card-title">Indoor Dining</h5>
+                        <p class="card-text">Experience the comfort of our beautifully designed indoor dining area.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="card">
+                    <img src="image/outdoor dining.png" class="card-img-top" alt="Outdoor Dining">
+                    <div class="card-body">
+                        <h5 class="card-title">Outdoor Dining</h5>
+                        <p class="card-text">Enjoy fresh air while dining in our cozy outdoor seating area.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="card">
+                    <img src="image/private dining.png" class="card-img-top" alt="Private Dining">
+                    <div class="card-body">
+                        <h5 class="card-title">Private Dining</h5>
+                        <p class="card-text">For a special occasion, book our private dining space for an intimate experience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Form Section -->
+    <section class="container my-5">
+        <h2 class="text-center mb-4" style="color: var(--primarycolor);">Make a Reservation</h2>
+        <form onsubmit="handleReservation(event)">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="name" style="font-weight: bold;">Full Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="email" style="font-weight: bold;">Email Address</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="phone"  style="font-weight: bold;">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="diningOption"  style="font-weight: bold;">Dining Option</label>
+                    <select class="form-control" id="diningOption" required>
+                        <option value="" disabled selected>Select dining option</option>
+                        <option value="indoor">Indoor Dining</option>
+                        <option value="outdoor">Outdoor Dining</option>
+                        <option value="private">Private Dining</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="date"  style="font-weight: bold;">Reservation Date</label>
+                <input type="date" class="form-control" id="date" required>
+            </div>
+            <div class="form-group">
+                <label for="time"  style="font-weight: bold;">Reservation Time</label>
+                <input type="time" class="form-control" id="time" required>
+            </div>
+            <button type="submit" class="btn">Book Reservation</button>
+        </form>
+    </section>
+
+    <!-- Reservation Confirmation Popup -->
+    <!-- Reservation Confirmation Popup -->
+    <div id="reservationPopup" class="popup">
+        <div class="popup-content">
+            <h3>Reservation Confirmed!</h3>
+            <p>Thank you for your reservation. We look forward to serving you.</p>
+            <div id="receiptContent" style="display: none; text-align: left; margin-top: 20px; background: #f9f9f9; padding: 10px; border-radius: 5px; font-size: 14px;">
+                <!-- Restaurant Logo for the Print Version -->
+                <div class="logo">
+                    <img src="image/logo.png" alt="Golden Fork Logo"> <!-- Add the correct path to your logo image -->
+                </div>
+                <h4>Receipt</h4>
+                <p><strong>Name:</strong> <span id="receiptName"></span></p>
+                <p><strong>Email:</strong> <span id="receiptEmail"></span></p>
+                <p><strong>Phone:</strong> <span id="receiptPhone"></span></p>
+                <p><strong>Dining Option:</strong> <span id="receiptDiningOption"></span></p>
+                <p><strong>Date:</strong> <span id="receiptDate"></span></p>
+                <p><strong>Time:</strong> <span id="receiptTime"></span></p>
+                
+                <!-- Footer with Restaurant Name -->
+                <div class="footer">
+                    <p>&copy; 2024 Golden Fork - All Rights Reserved</p>
+                </div>
+            </div>
+            <button onclick="closeReservationPopup()">Close</button>
+            <button onclick="printReceipt()">Print Receipt</button>
+        </div>
+    </div>
+
+    
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 our Restaurant - All Rights Reserved</p>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        function handleReservation(event) {
+            event.preventDefault();
+            document.getElementById('reservationPopup').style.display = 'flex';
+        }
+
+        function closeReservationPopup() {
+            document.getElementById('reservationPopup').style.display = 'none';
+        }
+        function handleReservation(event) {
+    event.preventDefault();
+
+    // Get form data
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const diningOption = document.getElementById('diningOption').value;
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+
+    // Populate receipt content
+    document.getElementById('receiptName').textContent = name;
+    document.getElementById('receiptEmail').textContent = email;
+    document.getElementById('receiptPhone').textContent = phone;
+    document.getElementById('receiptDiningOption').textContent = diningOption.charAt(0).toUpperCase() + diningOption.slice(1);
+    document.getElementById('receiptDate').textContent = date;
+    document.getElementById('receiptTime').textContent = time;
+
+    // Show popup
+    document.getElementById('reservationPopup').style.display = 'flex';
+}
+
+function closeReservationPopup() {
+    document.getElementById('reservationPopup').style.display = 'none';
+    document.getElementById('receiptContent').style.display = 'none'; // Hide receipt if it was shown
+}
+
+function showReceipt() {
+    document.getElementById('receiptContent').style.display = 'block'; // Show receipt section
+}
+function handleReservation(event) {
+        event.preventDefault();
+
+        // Get form data
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const diningOption = document.getElementById('diningOption').value;
+        const date = document.getElementById('date').value;
+        const time = document.getElementById('time').value;
+
+        // Populate receipt content
+        document.getElementById('receiptName').textContent = name;
+        document.getElementById('receiptEmail').textContent = email;
+        document.getElementById('receiptPhone').textContent = phone;
+        document.getElementById('receiptDiningOption').textContent = diningOption.charAt(0).toUpperCase() + diningOption.slice(1);
+        document.getElementById('receiptDate').textContent = date;
+        document.getElementById('receiptTime').textContent = time;
+
+        // Show popup
+        document.getElementById('reservationPopup').style.display = 'flex';
+    }
+
+    function closeReservationPopup() {
+        document.getElementById('reservationPopup').style.display = 'none';
+        document.getElementById('receiptContent').style.display = 'none'; // Hide receipt if it was shown
+    }
+
+    function printReceipt() {
+        document.getElementById('receiptContent').style.display = 'block'; // Show receipt section
+        window.print(); // Open print dialog to print the receipt
+    }
+    </script>
+</body>
+</html>

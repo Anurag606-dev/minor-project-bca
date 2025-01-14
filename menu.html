@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="./logo.png"type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Menu</title>
+    <link rel="stylesheet" href="menu.css">
+    <style>
+        /* Reset some default styles */
+:root {
+    --primarycolor: #800020;
+    --secondarycolor: #d2b48c;
+    --whitecolor: #fff;
+    --blackColor: #222;
+    --softGreenColor: #f4f1e1;
+    --darkGreyColor: #d9f2ee;
+    --greycolor: #f5f5f5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--greycolor);
+    color: #333;
+}
+
+/* Header styling */
+header {
+    background-color: var(--primarycolor);
+    color: var(--whitecolor);
+    padding: 1.5rem;
+    text-align: center;
+    height: 150px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.2rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    text-align: center; /* Center the items on all screens */
+}
+
+nav ul li {
+    display: inline-block; /* Ensure items align properly */
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: var(--whitecolor);
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 50px;
+}
+
+nav ul li a:hover {
+    text-decoration: none;
+    background-color: var(--secondarycolor);
+    color: var(--blackColor);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+}
+
+
+/* Main content styling */
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+/* Category section styling */
+.category {
+    margin-bottom: 3rem;
+}
+
+.category h2 {
+    font-size: 2rem;
+    color: var(--primarycolor);
+    border-bottom: 2px solid #333;
+    margin-bottom: 1.5rem;
+}
+
+/* Grid layout for menu items */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Individual menu item styling */
+.menu-item {
+    background-color: var(--softGreenColor);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.menu-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    transition: opacity 0.3s;
+}
+
+.menu-item p {
+    padding: 0.8rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Hover effects */
+.menu-item:hover {
+    transform: scale(1.05);
+}
+
+.menu-item:hover img {
+    opacity: 0.85;
+}
+
+/* Footer styling */
+footer {
+    background-color: var(--primarycolor);
+    color: var(--whitecolor);
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+/* Order button styling */
+.order-btn {
+    padding: 10px 20px;
+    background-color: var(--primarycolor);
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    border-radius: 8px;
+    margin-left: 89%;
+}
+
+.order-btn:hover {
+    background-color: var(--secondarycolor);
+    font-weight: bold;
+    color: black;
+}
+
+/* Media Queries for responsiveness */
+
+/* For tablets (max-width: 768px) */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    nav ul li {
+        display: inline-flex;
+        margin: 8px 0;
+    }
+
+    .menu-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .menu-item p {
+        font-size: 1rem;
+    }
+
+    .order-btn {
+        margin-left: 50%;
+    }
+}
+/* For mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+    header {
+        padding: 1rem;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    header p {
+        font-size: 0.9rem;
+    }
+
+    nav ul li a {
+        font-size: 14px;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .menu-item img {
+        height: 120px;
+    }
+
+    .menu-item p {
+        font-size: 0.9rem;
+    }
+
+    .order-btn {
+        margin-left: 8%;
+        width: 40%;
+    }
+}
+@media (max-width: 768px) {
+    nav ul li {
+        display: inline-block;
+        margin: 0 8px;
+    }
+
+    nav ul li a {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+}
+
+/* For mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+    nav ul {
+        padding-left: 0;
+    }
+
+    nav ul li {
+        display: inline-flex; /* Stack items vertically on mobile */
+        margin: 8px 0;
+    }
+
+    nav ul li a {
+        font-size: 14px;
+        padding: 8px 13px;
+        display: block; /* Make the links block-level for easier tapping */
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h2>Welcome to Our Food Menu</h2>
+       
+        <nav>
+            <ul>
+                <li><a href="main.html">Home</a></li>
+                <li><a href="services.html">services</a></li>
+                <li><a href="review.html">Reviews</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Category: Appetizers -->
+        <section class="category">
+            <h2>Appetizers <a href="takeway.html"><button class="order-btn">Place Order</button></a></h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="./food menu/Appetizers/samosa.jpeg" alt="">
+                    <p>Samosa</p>
+                </div>
+                <div class="menu-item">
+                    <img src="./food menu/Appetizers/aloo tiki.jpg" alt="">
+                    <p>Aloo Tikki Chaat</p>
+                </div>
+                <div class="menu-item">
+                    <img src="./food menu/Appetizers/Dahi puri.jpeg" alt="">
+                    <p>Dahi Puri</p>
+                </div>
+                <div class="menu-item">
+                    <img src="./food menu/Appetizers/panni puri.jpeg" alt="">
+                    <p>Pani Puri</p>
+                </div>
+                <div class="menu-item">
+                    <img src="./food menu/Appetizers/spring roll.jpeg" alt="">
+                    <p>Spring Rolls</p>
+                </div>
+                <div class="menu-item">
+                    <img src="./food menu/Appetizers/vegetable pakora.jpeg" alt="">
+                    <p>Pakora (vegetable fritters)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="./image/momos.jpg" alt="">
+                    <p>Momos</p>
+                </div>
+                <div class="menu-item">
+                    <img src="./food menu/Appetizers/panner tikka.jpeg" alt="">
+                    <p>Panner Tikka</p>
+                </div>
+                <div class="menu-item">
+                    <img src="./food menu/Appetizers/hara bhara khabab.jpeg" alt="">
+                    <p>Hara Bhara Kebab</p>
+                </div>
+                <div class="menu-item">
+                    <img src="./food menu/Appetizers/corn and cheese ball.jpeg" alt="">
+                    <p>Corn and Cheese Ball</p>
+                </div>
+                <!-- Add remaining appetizer items here in similar structure -->
+            </div>
+        </section>
+
+        <!-- Repeat sections for other categories such as Soups, Salads, etc., with similar structure -->
+
+        <!-- Example for Soups -->
+        <section class="category">
+            <h2>Soups & Salads <a href=""><button class="order-btn">Place Order</button></a></h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="./food menu/Soups & Salads/tomato shorba.jpeg" alt="">
+                    <p>Tomato Shorba</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Soups & Salads/mulligatwny soup.jpeg" alt="">
+                    <p>Mulligatawny Soup</p>
+                </div>
+                <div class="menu-item">
+                    <img src="./food menu/Soups & Salads/palak soup.jpeg" alt="">
+                    <p>Palak Soup (Spinach Soup)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="./food menu/Soups & Salads/lentil soup.jpeg" alt="">
+                    <p>Lentil Soup</p>
+                </div>
+                <div class="menu-item">
+                    <img src="/food menu//Soups & Salads/coconut soup.jpeg" alt="">
+                    <p>Coconut Soup</p>
+                </div>
+                <div class="menu-item">
+                    <img src="./food menu/Soups & Salads/kacumbar salad.jpeg" alt="">
+                    <p>Kachumber Salad (Cucumber & Tomato Salad)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="./food menu/Soups & Salads/beetroot raita.jpeg" alt="">
+                    <p>Beetroot Raita</p>
+                </div>
+                <div class="menu-item">
+                    <img src="./food menu/Soups & Salads/boondi raita.jpeg" alt="">
+                    <p>Boondi Raita</p>
+                </div>
+                <div class="menu-item">
+                    <img src="./food menu/Soups & Salads/aloo chana chaat.jpeg" alt="">
+                    <p>Aloo Chana Chaat</p>
+                </div>
+                <div class="menu-item">
+                    <img src="./food menu/Soups & Salads/sprout salad.jpeg" alt="">
+                    <p>Sprout Salad</p>
+                </div> 
+                </div>
+        </section>
+        <section class="category">
+            <h2>Vegetarian Main Courses <a href=""><button class="order-btn">Place Order</button></a></h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="food menu/Vegetarian Main Courses/paneer butter masla.jpeg" alt="">
+                    <p>Paneer Butter Masala</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Vegetarian Main Courses/dal makni.jpeg" alt="">
+                    <p>Dal Makhani</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Vegetarian Main Courses/bagan bharta.jpeg" alt="">
+                    <p>Baingan Bharta (Smoky Eggplant Curry)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Vegetarian Main Courses/chole.jpeg" alt="">
+                    <p>Chole (Chickpea Curry)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Vegetarian Main Courses/aloo ghobi.jpeg" alt="">
+                    <p>Aloo Gobi (Potato and Cauliflower)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Vegetarian Main Courses/bhindi masla.jpeg" alt="">
+                    <p>Bhindi Masala (Okra)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Vegetarian Main Courses/malai kofta.jpeg" alt="">
+                    <p>Malai Kofta (Cottage Cheese Balls in Gravy)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Vegetarian Main Courses/kadai panner.jpeg" alt="">
+                    <p>Kadai Paneer (Paneer in Spicy Gravy)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Vegetarian Main Courses/palak panner.jpeg" alt="">
+                    <p>Palak Paneer (Spinach and Cottage Cheese)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Vegetarian Main Courses/vegetable corma.jpeg" alt="">
+                    <p>Vegetable Korma</p>
+                </div> 
+                </div>
+        </section>
+        <section class="category">
+            <h2>Breads <a href=""><button class="order-btn">Place Order</button></a></h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="food menu/Breads/butter garlic.jpeg" alt="">
+                    <p>Naan (Butter/Garlic)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Breads/roti.jpeg" alt="">
+                    <p>Roti (Chapati)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Breads/aloo parhta.jpeg" alt="">
+                    <p>Aloo Paratha</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Breads/poori.jpeg" alt="">
+                    <p>Puri</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Breads/bhature.jpeg" alt="">
+                    <p>Bhature</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Breads/lacha paratha.jpeg" alt="">
+                    <p>Lachha Paratha</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Breads/missi roti.jpeg" alt="">
+                    <p>Missi Roti</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Breads/kulcha paratha.jpg" alt="">
+                    <p>Kulcha (Amritsari)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Breads/tandori roti.jpeg" alt="">
+                    <p>Tandoori Roti</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Breads/malabar parotta.jpeg" alt="">
+                    <p>Malabar Parotta</p>
+                </div> 
+                </div>
+        </section>
+        <section class="category">
+            <h2>Rice & Biryanis <a href=""><button class="order-btn">Place Order</button></a></h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="food menu/Rice & Biryanis/vegetable pulao .jpeg" alt="">
+                    <p>vegetable Biryani</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Rice & Biryanis/jeera rice.jpeg" alt="">
+                    <p>Jeera Rice (Cumin Rice)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Rice & Biryanis/ghee rice.jpeg" alt="">
+                    <p>Ghee Rice</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Rice & Biryanis/pea pulao.jpeg" alt="">
+                    <p>Peas Pulao</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Rice & Biryanis/lemon rice.jpeg" alt="">
+                    <p>Lemon Rice</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Rice & Biryanis/coconut rice.jpeg" alt="">
+                    <p>Coconut Rice</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Rice & Biryanis/tarmind rice.jpeg" alt="">
+                    <p>Tarmarind Rice</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Rice & Biryanis/kashmiri pulao.jpeg" alt="">
+                    <p>Kashmiri Pulao</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Rice & Biryanis/vegetable rice.jpeg" alt="">
+                    <p>vegetable Fried Rice</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Rice & Biryanis/mushroom rice.jpeg" alt="">
+                    <p>Mushroom Pulao</p>
+                </div> 
+                </div>
+        </section>
+        <section class="category">
+            <h2>Street Foods<a href=""><button class="order-btn">Place Order</button></h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="food menu/Street Foods/pav bhaji.jpeg" alt="">
+                    <p>Pav Bhaji</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Street Foods/vada pav.jpeg" alt="">
+                    <p>Vada Pav</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Street Foods/dabeli.jpeg" alt="">
+                    <p>Dabeli</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Street Foods/ragada pattice.jpeg" alt="">
+                    <p>Ragda Pattice</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Street Foods/kathi roll.jpeg" alt="">
+                    <p>Kathi Roll(Vegetable)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Street Foods/bhel puri.jpeg" alt="">
+                    <p>Bhel Puri</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Street Foods/sev puri.jpeg" alt="">
+                    <p>Sev puri</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Street Foods/chat papadi.jpeg" alt="">
+                    <p>Chaat Papadi</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Street Foods/bombay sandwich.jpeg" alt="">
+                    <p>Bombay Sandwich</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Street Foods/dahi bhalla.jpeg" alt="">
+                    <p>Dahi Bhalla</p>
+                </div> 
+                </div>
+        </section>
+        <section class="category">
+            <h2>South Indian Dishes<a href=""><button class="order-btn">Place Order</button></h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="food menu/South Indian Dishes/masla dosa.jpeg" alt="">
+                    <p>Masala Dosa</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/South Indian Dishes/idli.jpeg" alt="">
+                    <p>Idli</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/South Indian Dishes/medu vada.jpeg" alt="">
+                    <p>Medu Vada</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/South Indian Dishes/uttapam.jpeg" alt="">
+                    <p>Uttapam</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/South Indian Dishes/pongal.jpeg" alt="">
+                    <p>Pongal</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/South Indian Dishes/appam stew.jpeg" alt="">
+                    <p>Appam With vegetable Stew</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/South Indian Dishes/green dosa.jpeg" alt="">
+                    <p>Pesarattu(Green Gram Dosa)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/South Indian Dishes/rava dosa.jpeg" alt="">
+                    <p>Rava Dosa</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/South Indian Dishes/paniyaram.jpeg" alt="">
+                    <p>Paniyaram</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/South Indian Dishes/vegetable korma.jpeg" alt="">
+                    <p>vegetable Korma</p>
+                </div> 
+                </div>
+        </section>
+        <section class="category">
+            <h2>Regional Specialties <a href=""><button class="order-btn">Place Order</button></a></h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="food menu/Regional Specialties/sarso ka saag.jpeg" alt="">
+                    <p>Sarson Ka Saag with Makki Di Roti (Punjab)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Regional Specialties/misal pav.jpeg" alt="">
+                    <p>Misal Pav (Maharashtra)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Regional Specialties/dal bhatti.jpeg" alt="">
+                    <p>Dal Baati Churma (Rajasthan)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Regional Specialties/litti choka.jpeg" alt="">
+                    <p>Litti Chokha (Bihar)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Regional Specialties/biryani.jpeg" alt="">
+                    <p>Hyderabadi Vegetable Biryani (Hyderabad)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Regional Specialties/khosha bindi.jpeg" alt="">
+                    <p>Kosha Bhindi (Bengal)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Regional Specialties/gaon curry.jpeg" alt="">
+                    <p>Goan Vegetable Curry (Goa)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Regional Specialties/bamboo cury.jpeg" alt="">
+                    <p>Bamboo Shoot Curry</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Regional Specialties/assam tenga.jpeg" alt="">
+                    <p>Assamese Vegetable Tenga (Assam)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Regional Specialties/butte kees.jpeg" alt="">
+                    <p>Bhutte Ka Kees (Madhya Pradesh)</p>
+                </div> 
+                </div>
+        </section>
+        <section class="category">
+            <h2>Regional Specialties <a href=""><button class="order-btn">Place Order</button></a></h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="food menu/Chutneys & Pickles/mint.jpeg" alt="">
+                    <p>Mint Chutney</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Chutneys & Pickles/tarmarind chutney.jpeg" alt="">
+                    <p>Tarmarind Chutney</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Chutneys & Pickles/mango pickle.jpeg" alt="">
+                    <p>Mango Pickle</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Chutneys & Pickles/lemon pickle.jpeg" alt="">
+                    <p>Lime Pickle</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Chutneys & Pickles/coconut cutney.jpeg" alt="">
+                    <p>Coconut Chutney</p>
+                </div>
+                </div>
+        </section>
+        <section class="category">
+            <h2>Desserts <a href=""><button class="order-btn">Place Order</button></h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="food menu/Desserts/gulab jamun.jpeg" alt="">
+                    <p>Gulab Jamun</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Desserts/jalebi.jpeg" alt="">
+                    <p>Jalebi</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Desserts/rasgulla.jpeg" alt="">
+                    <p>Rasgulla</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Desserts/kheer.jpeg" alt="">
+                    <p>Kheer(Rice Pudding)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Desserts/gajar ka halwa.jpeg" alt="">
+                    <p>Gajar Ka Halwa (Carrot Halwa)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Desserts/sooji ka halwa.jpeg" alt="">
+                    <p>Sooji Halwa(Semolina Pudding)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Desserts/cham cham.jpeg" alt="">
+                    <p>Chum Chum</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Desserts/sandesh.jpeg" alt="">
+                    <p>Sandesh</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Desserts/peda.jpeg" alt="">
+                    <p>Peda</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Desserts/malpua.jpeg" alt="">
+                    <p>Malpua</p>
+                </div> 
+                </div>
+        </section>
+        <section class="category">
+            <h2>Drinks<a href=""><button class="order-btn">Place Order</button></a></h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="food menu/Drinks/masla chai.jpeg" alt="">
+                    <p>Masla Chai</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Drinks/mango lassi.jpeg" alt="">
+                    <p>Mango Lassi</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Drinks/butter mil.jpeg" alt="">
+                    <p>Buttermilk (Chaas)</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Drinks/coconut water.jpeg" alt="">
+                    <p>Coconut Water</p>
+                </div>
+                <div class="menu-item">
+                    <img src="food menu/Drinks/rose lassi.jpeg" alt="">
+                    <p>Rose Lassi</p>
+                </div>
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Our Restaurant | All rights reserved.</p>
+    </footer>
+</body>
+</html>

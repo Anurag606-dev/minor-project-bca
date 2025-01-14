@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Voucher</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f9f3e9;
+        }
+
+        .voucher-container {
+            width: 600px;
+            background: linear-gradient(135deg, #f9f3e9, #d4b49b);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            padding: 20px;
+            margin: 10px 0;
+        }
+
+        .voucher-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .voucher-header img {
+            width: 60px;
+            height: auto;
+        }
+
+        .voucher-header h1 {
+            font-size: 24px;
+            color: #b03a2e;
+            font-weight: bold;
+        }
+
+        .voucher-details {
+            margin: 20px 0;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .voucher-details label {
+            font-weight: bold;
+        }
+
+        .voucher-body {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .voucher-left {
+            width: 60%;
+        }
+
+        .voucher-left p {
+            font-size: 14px;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .voucher-right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .voucher-right img {
+            width: 80px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .voucher-right p {
+            font-size: 12px;
+            color: #333;
+            text-align: center;
+        }a
+
+        .voucher-footer {
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+        }
+
+        .voucher-footer a {
+            color: #b03a2e;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .terms-info {
+            font-size: 12px;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        .voucher-image {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            width: 120px;
+        }
+
+        .action-buttons {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .action-buttons button {
+            background-color: #b03a2e;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 16px;
+        }
+
+        .action-buttons button:hover {
+            background-color: #9a2a1f;
+        }
+
+        /* Print-specific styles */
+        @media print {
+            /* Hide the action buttons */
+            .action-buttons {
+                display: none;
+            }
+
+            /* Apply website colors and backgrounds for print */
+            body {
+                background-color: #f9f3e9 !important;
+            }
+
+            .voucher-container {
+                background: linear-gradient(135deg, #f9f3e9, #d4b49b) !important;
+                color: #333;
+                -webkit-print-color-adjust: exact; /* Ensures colors are preserved in print */
+                print-color-adjust: exact;       /* Standard property */
+            }
+
+            .voucher-header h1 {
+                color: #b03a2e !important;
+            }
+
+            .voucher-footer a {
+                color: #b03a2e !important;
+            }
+
+            /* Ensure background images are printed */
+            .voucher-image {
+                display: block;
+            }
+
+            img {
+                display: block;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="voucher-container">
+        <div class="voucher-header">
+            <img src="chef.png" alt="Golden Fork Logo">
+            <h1>GOLDEN FORK</h1>
+        </div>
+        <div class="voucher-details">
+            <p><label>Value:</label> <span id="voucherValue">__________</span></p>
+            <p><label>Voucher No:</label> <span id="voucherCode">__________</span></p>
+            <p><label>Valid Upto:</label> <span id="validityDate">__________</span></p>
+        </div>
+        <img src="image/images-removebg-preview.png" alt="Chef Image" class="voucher-image">
+        <div class="terms-info">
+            * This voucher is non-transferable and non-refundable.
+        </div>
+    </div>
+
+    <div class="voucher-container">
+        <div class="voucher-header">
+            <h1>GOLDEN FORK</h1>
+            <img src="chef.png" alt="Golden Fork Logo">
+        </div>
+        <div class="voucher-body">
+            <div class="voucher-left">
+                <p>The coupon is issued by: Golden Fork Restaurant</p>
+                <p>Terms and conditions can go here. Talk about when and where this gift voucher can be used and any other important details.</p>
+            </div>
+            <div class="voucher-right">
+                <img src="image/reststamp-removebg-preview.png" alt="Restaurant Seal">
+                <p>Restaurant Seal-Authorised Signatory</p>
+            </div>
+        </div>
+        <div class="voucher-footer">
+            <p><a href="https://www.goldenfork.com">www.goldenfork.com</a> | 123-456-7890</p>
+        </div>
+    </div>
+
+    <div class="action-buttons">
+        <button onclick="window.print()">Print</button>
+        <button onclick="window.history.back()">Back</button>
+    </div>
+
+    <script>
+        // Parse URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const value = urlParams.get('value');
+        const coupon = urlParams.get('coupon');
+
+        // Set the values dynamically
+        document.getElementById('voucherValue').textContent = `₹${value}`;
+        document.getElementById('voucherCode').textContent = coupon;
+
+        // Set a validity date 180 days from today
+        const today = new Date();
+        const validityDate = new Date(today.setDate(today.getDate() + 180)).toLocaleDateString();
+        document.getElementById('validityDate').textContent = validityDate;
+    </script>
+</body>
+</html>

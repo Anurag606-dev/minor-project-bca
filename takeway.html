@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Takeaway</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom Styling for Header */
+        :root {
+            --primarycolor: #800020;
+            --secondarycolor: #d2b48c;
+            --whitecolor: #fff;
+            --blackColor: #222;
+            --softGreenColor: #f4f1e1;
+            --darkGreyColor: #d9f2ee;
+            --greycolor: #f5f5f5;
+        }
+        body{
+            background-color: var(--softGreenColor);
+        }
+        header {
+            background: var(--primarycolor);
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+        header h1 {
+            font-size: 1.5rem;
+        }
+        .menu-item {
+            background:var(--greycolor);
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .menu-item img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .order-form {
+            background:var(--greycolor);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .order-form button {
+            background-color: var(--primarycolor);
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border: none;
+            transition: background 0.3s;
+        
+        }
+        .order-form button:hover {
+            background: var(--secondarycolor);
+            color: var(--blackColor);
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            padding: 8px;
+            background-color: var(--primarycolor);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Order Your Favorites</h1>
+    </header>
+
+    <div class="container">
+        <div class="hero text-center my-5">
+            <h2>Takeaway Made Easy</h2>
+            <p>Order online and enjoy our gourmet meals from the comfort of your home.</p>
+        </div>
+
+        <section class="menu-section row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            <div class="menu-item col">
+                <img src="image/chowmein.jpg" alt="Dish 1" class="img-fluid">
+                <h3>Chowmein</h3>
+                <p>Stir-fried noodles with vegetables and savory sauce.</p>
+            </div>
+            <div class="menu-item col">
+                <img src="image/manchurain.png" alt="Dish 2" class="img-fluid">
+                <h3>Manchurian</h3>
+                <p>Crispy veg balls in a tangy, spicy sauce</p>
+            </div>
+            <div class="menu-item col">
+                <img src="image/chilli potato.jpg" alt="Dish 3" class="img-fluid">
+                <h3>Chilli potato</h3>
+                <p>Crispy potatoes in a spicy, tangy sauce.</p>
+            </div>
+            <div class="menu-item col">
+                <img src="image/pizza.png" alt="Dish 4" class="img-fluid">
+                <h3>Pizza</h3>
+                <p>Cheesy, savory flatbread with various toppings.</p>
+            </div>
+        </section>
+
+        <section class="order-form">
+            <h2 class="text-center mb-4" style="color: var(--primarycolor);">Place Your Order</h2>
+            <form id="orderForm">
+                <div class="mb-3">
+                    <label for="name" class="form-label" style="font-weight: bold;">Name</label>
+                    <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+                </div>
+        
+                <div class="mb-3">
+                    <label for="contact" class="form-label" style="font-weight: bold;">Contact Number</label>
+                    <input type="tel" id="contact" class="form-control" placeholder="Enter your phone number" required>
+                </div>
+        
+                <div class="mb-3">
+                    <label for="address" class="form-label" style="font-weight: bold;">Delivery Address</label>
+                    <input type="text" id="address" class="form-control" placeholder="Enter your address" required>
+                </div>
+        
+                <div class="mb-3">
+                    <label for="dishName" class="form-label" style="font-weight: bold;">Enter your Dish name</label>
+                    <input type="text" id="dishName" name="dishName" class="form-control" placeholder="Dish name" required>
+                </div>
+        
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn ">Place Order</button>
+                    <a href="menu.html" class="btn btn-secondary w-15" style=" background-color: var(--primarycolor);">All Food Menu</a>
+                </div>
+            </form>
+        </section>
+        
+    </div>
+
+    <!-- Bootstrap Modal -->
+    <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="orderModalLabel">Order Confirmation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="orderMessage">
+                    <!-- Order confirmation message will appear here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 our Restaurant - All Rights Reserved</p>
+    </footer>
+    
+    <!-- Bootstrap JS & Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('orderForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const contact = document.getElementById('contact').value;
+            const address = document.getElementById('address').value;
+            const dish = document.getElementById('dishName').value;
+
+            // Create the confirmation message
+            const confirmationMessage = `
+                <p>Thank you, <strong>${name}</strong>!</p>
+                <p>Your order for <strong>${dish}</strong> will be delivered to <strong>${address}</strong>.</p>
+                <p>We will contact you at <strong>${contact}</strong>.</p>
+            `;
+            document.getElementById('orderMessage').innerHTML = confirmationMessage;
+
+            // Show the modal
+            const orderModal = new bootstrap.Modal(document.getElementById('orderModal'));
+            orderModal.show();
+        });
+    </script>
+</body>
+</html>

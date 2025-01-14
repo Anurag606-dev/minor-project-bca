@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="./logo.png"type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Reviews</title>
+    <link rel="stylesheet" href="review.css">
+    <style>
+   :root{
+    --primarycolor:  #800020;
+    --secondarycolor:#d2b48c;
+    --whitecolor: #fff;
+    --blackColor:#222;
+    --softGreenColor:#f4f1e1;
+    --darkGreyColor:#d9f2ee;
+    --greycolor: #f5f5f5;
+ }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color:var(--greycolor);
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: var(--primarycolor);
+    color: var(--whitecolor);
+    text-align: center;
+    padding: 20px 0;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    align-items: center;
+    margin-top: 5px;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+    
+}
+
+nav ul li a {
+    color: var(--whitecolor);
+    text-decoration: none;
+    font-size: 16px; /* Corrected from 14x to 16px */
+    padding: 10px 15px; /* Added padding for better click area */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover */
+    border-radius: 50px; /* Rounded corners for all links */
+}
+
+nav ul li a:hover {
+    background-color: var(--secondarycolor);
+    color: var(--blackColor);
+    transform: translateY(-2px); /* Slight upward movement on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+}
+
+
+#review-section {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background:var(--greycolor);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: var(--primarycolor);
+}
+
+.chef-image-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.chef-image {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+    border: 3px solid #35424a;
+}
+
+.rating {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.star {
+    font-size: 30px;
+    color: #ccc; /* Default color for stars */
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.star:hover,
+.star.selected {
+    color:var(--primarycolor); /* Color when selected or hovered */
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family:  sans-serif;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--primarycolor);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color:var(--secondarycolor); /* Change color on hover */
+    color:var(--blackColor);
+    font-weight: bold;
+}
+
+.review {
+    border: 1px solid #ccc;
+    background: #f2f2f2;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+.review-rating {
+    font-size: 20px;
+    color: var(--primarycolor);
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background: var(--primarycolor);
+    color:var(--whitecolor);
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Restaurant Reviews</h1>
+        <nav>
+            <ul>
+                <li><a href="main.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Conatct Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="review-section">
+        <h2>Leave a Review</h2>
+        <div class="chef-image-container">
+            <img src="./image/images-removebg-preview.png" alt="Chef" class="chef-image">
+        </div>
+        <form id="reviewForm">
+            <div class="rating">
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+            </div>
+            <textarea id="reviewText" placeholder="Write your review..." required></textarea>
+            <button type="submit">Submit Review</button>
+        </form>
+        <div id="reviewsContainer"></div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Our Restaurant. All rights reserved.</p>
+    </footer>
+    <div id="popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: var(--whitecolor); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 8px; text-align: center; z-index: 1000;">
+        <p>Thank you for your review!</p>
+        <button id="closePopup" style="background-color: var(--primarycolor); color: var(--whitecolor); border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer;">Close</button>
+    </div>
+    <div id="popupOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 999;"></div>
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const stars = document.querySelectorAll('.star');
+    const reviewText = document.getElementById('reviewText');
+    const reviewForm = document.getElementById('reviewForm');
+    const reviewsContainer = document.getElementById('reviewsContainer');
+
+    let selectedRating = 0;
+
+    // Star hover effect
+    stars.forEach((star, index) => {
+        star.addEventListener('mouseover', () => {
+            highlightStars(index);
+        });
+
+        star.addEventListener('mouseleave', () => {
+            highlightStars(selectedRating - 1);
+        });
+
+        star.addEventListener('click', () => {
+            selectedRating = index + 1;
+            highlightStars(index);
+        });
+    });
+
+    // Highlight stars based on selection or hover
+    function highlightStars(index) {
+        stars.forEach((star, i) => {
+            star.classList.toggle('selected', i <= index);
+        });
+    }
+
+    // Form submission
+    reviewForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Get review text and rating
+        const review = reviewText.value.trim();
+        if (!review || selectedRating === 0) {
+            alert('Please provide a rating and review.');
+            return;
+        }
+
+        // Create a new review element
+        const reviewElement = document.createElement('div');
+        reviewElement.classList.add('review');
+        reviewElement.innerHTML = `
+            <div class="review-rating">${'★'.repeat(selectedRating)}${'☆'.repeat(5 - selectedRating)}</div>
+            <p class="review-text">${review}</p>
+        `;
+
+        // Add the new review to the reviews container
+        reviewsContainer.prepend(reviewElement);
+
+        // Alert the user that the review was submitted
+
+        // Reset form
+        selectedRating = 0;
+        reviewText.value = '';
+        highlightStars(-1); // Reset stars
+    });
+});
+document.addEventListener("DOMContentLoaded", () => {
+    const reviewForm = document.getElementById("reviewForm");
+    const popup = document.getElementById("popup");
+    const popupOverlay = document.getElementById("popupOverlay");
+    const closePopup = document.getElementById("closePopup");
+
+    reviewForm.addEventListener("submit", (event) => {
+        event.preventDefault(); // Prevent form submission
+        // Show the popup
+        popup.style.display = "block";
+        popupOverlay.style.display = "block";
+    });
+
+    closePopup.addEventListener("click", () => {
+        // Close the popup
+        popup.style.display = "none";
+        popupOverlay.style.display = "none";
+        // Optionally reset the form
+        reviewForm.reset();
+    });
+
+    popupOverlay.addEventListener("click", () => {
+        // Close the popup when overlay is clicked
+        popup.style.display = "none";
+        popupOverlay.style.display = "none";
+    });
+});
+
+
+    </script>
+</body>
+</html>

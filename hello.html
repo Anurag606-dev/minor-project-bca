@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Dine In</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Your existing CSS here */
+
+        /* Custom Print Styles */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #receiptContent, #receiptContent * {
+                visibility: visible;
+            }
+            
+            /* Styling the receipt container */
+            #receiptContent {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                width: 100%;
+                font-family: 'Arial', sans-serif;
+                background-color: white;
+                padding: 20px;
+                border: 1px solid #ddd;
+                box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+            }
+
+            /* Logo at the top of the receipt */
+            #receiptContent .logo {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            #receiptContent .logo img {
+                max-width: 150px;
+                height: auto;
+            }
+
+            /* Receipt Header */
+            #receiptContent h4 {
+                font-size: 24px;
+                margin-bottom: 10px;
+                text-align: center;
+                color: var(--primarycolor); /* Using website color */
+            }
+
+            /* Receipt Details */
+            #receiptContent p {
+                font-size: 16px;
+                margin: 5px 0;
+            }
+
+            /* Footer in the print */
+            #receiptContent .footer {
+                text-align: center;
+                margin-top: 20px;
+                font-size: 14px;
+                color: var(--primarycolor); /* Matching website footer color */
+            }
+
+            /* Hide other elements (e.g., buttons, header, footer) */
+            button, footer, .header, .container {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Your existing content here -->
+
+    <div id="reservationPopup" class="popup">
+        <div class="popup-content">
+            <h3>Reservation Confirmed!</h3>
+            <p>Thank you for your reservation. We look forward to serving you.</p>
+            <div id="receiptContent" style="display: none; text-align: left; margin-top: 20px; background: #f9f9f9; padding: 10px; border-radius: 5px; font-size: 14px;">
+                <!-- Restaurant Logo for the Print Version -->
+                <div class="logo">
+                    <img src="image/logo.png" alt="Golden Fork Logo"> <!-- Add the correct path to your logo image -->
+                </div>
+                <h4>Receipt</h4>
+                <p><strong>Name:</strong> <span id="receiptName"></span></p>
+                <p><strong>Email:</strong> <span id="receiptEmail"></span></p>
+                <p><strong>Phone:</strong> <span id="receiptPhone"></span></p>
+                <p><strong>Dining Option:</strong> <span id="receiptDiningOption"></span></p>
+                <p><strong>Date:</strong> <span id="receiptDate"></span></p>
+                <p><strong>Time:</strong> <span id="receiptTime"></span></p>
+                
+                <!-- Footer with Restaurant Name -->
+                <div class="footer">
+                    <p>&copy; 2024 Golden Fork - All Rights Reserved</p>
+                </div>
+            </div>
+            <button onclick="closeReservationPopup()">Close</button>
+            <button onclick="printReceipt()">Print Receipt</button>
+        </div>
+    </div>
+
+    <!-- Your existing scripts here -->
+
+    <script>
+        function printReceipt() {
+            document.getElementById('receiptContent').style.display = 'block';
+            window.print();
+        }
+    </script>
+
+</body>
+</html>

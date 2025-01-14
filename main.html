@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="./logo.png"type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./main.css">
+    <style>
+       :root{
+    --primarycolor:  #800020;
+    --secondarycolor:#d2b48c;
+    --whitecolor: #fff;
+    --blackColor:#222;
+    --softGreenColor:#f4f1e1;
+    --darkGreyColor:#d9f2ee;
+    --greycolor: #f5f5f5;
+ }
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: 'open sans',sans-serif;
+ }
+ .body{
+    width: 100%;
+    height: auto;
+    display: flex;
+ }
+ .logo img{
+   width: 80%;
+   align-items: center;
+ }
+ .sidebar{
+    height: 100%;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 2%;
+    background-color: var(--primarycolor);
+    color: var(--whitecolor);
+ }
+ .sidebar-menu{
+   display: flex;
+   flex-direction: column;
+ }
+ .sidebar-menu a, .sidebar-logout a{
+   padding: 5% 8%;
+   margin: 0.5rem 0;
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+   gap: 1rem;
+   text-decoration:none;
+   color: var(--whitecolor);
+ }
+ .sidebar-menu a ion-icon, .sidebar-logout a ion-icon{
+   font-size: 15px;
+ }
+ .sidebar-menu a:hover,  .sidebar-logout a:hover{
+
+   background-color: var(--secondarycolor);
+   border-radius: 50px;
+   color: var(--blackColor);
+   font-weight: bold;
+   text-decoration: none;
+ }
+ .main{
+   width: 82%;
+   min-height: 100vh;
+   padding: 2%;
+   background-color: var(--softGreenColor);
+   margin-left: 250px;
+ }
+ .main-navbar{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+ }
+ .menu-toggle{
+   display: none;
+ }
+ .search {
+  width: 60%;
+  height: 40px;
+  display: flex;
+  justify-content: space-between; /* Changed from space-around to space-between for better button alignment */
+  align-items: center; /* Vertically centers content */
+  background-color: var(--whitecolor);
+  border-radius: 20px;
+}
+
+.search input {
+  width: 80%;
+  height: 100%;
+  padding: 0 15px; /* Adjusted padding to prevent excessive space */
+  border: none;
+  border-radius: 20px;
+}
+
+.search-btn {
+  background-color: var(--primarycolor);
+  color: var(--whitecolor);
+  border: none;
+  border-radius: 20px;
+  width: 140px;
+  height: 100%; /* Ensures button height matches input height */
+  cursor: pointer;
+}
+
+.search:hover {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.search-btn:hover {
+  background-color: var(--secondarycolor);
+  color: var(--blackColor);
+  font-weight: bold;
+}
+
+ .profile{
+   display: flex;
+   align-items: center;
+   gap: 0.5rem;
+ }
+ .cart, .user{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: var(--whitecolor);
+   font-size: 20px;
+   color: var(--primarycolor);
+   padding: 0 10px;
+   height: 40px;
+   border-radius: 50% ;
+ }
+ .cart:hover, .user:hover{
+   box-shadow: rgba(149,157,165,0.2) 0px 8px 24px;
+ }
+ .main-highlight{
+   margin: 3% 0;
+   padding: 2%;
+   background-color: var(--secondarycolor);
+   border-radius: 8px;
+ }
+ .main-header{
+   display: flex;
+   width: 100%;
+   justify-content: space-between;
+   align-items: center;
+ }
+ .main-title{
+   font-size: 20px;
+ }
+ .main-arrow{
+   font-size: 24px;
+ }
+ .back, .next{
+   cursor: pointer;
+ }
+ .back:hover, .next:hover{
+   color: var(--primarycolor);
+ }
+ .highlight-wrapper{
+   width: 100%;
+   display: flex;
+   padding: 1%;
+   border-radius: 8px;
+   gap: 1.5rem;
+   overflow-x: hidden;
+ }
+ .highlight-card{
+   display: flex;
+   flex-direction: row;
+   min-width: 200px;
+   width: 80%;
+   height: 100% ;
+   gap: 1rem;
+   border-radius: 8px;
+   padding: 1px;
+   background-color: var(--softGreenColor);
+   cursor: pointer;
+ }
+ .highlight-img{
+   width: 40px;
+   height: 40px;
+   border-radius: 8px;
+   object-fit: cover;
+   object-position: center;
+ }
+ .highlight-card:hover{
+   background-color: var(--softGreenColor);
+   box-shadow: rgba(176, 176,176, 0.2)0px 2px 8px 0px;
+ }
+ .main-menus{
+   min-height: 100%;
+   background-color:var(--greycolor);
+   padding: 2px;
+   border-radius: 8px;
+ }
+ .main-filter{
+   width:100%;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   margin-top: 1.5rem;
+   gap: 1rem;
+ }
+ .back-menus, .next-menus{
+   cursor: pointer;
+ }
+ .back-menus:hover, .next-menus:hover{
+   color: var(--primarycolor);
+ }
+ .filter-wrapper{
+   display: flex;
+   justify-content: flex-start;
+   overflow-x: hidden;
+   width: 100%;
+   height: 100px;
+   gap: 1.2rem;
+ }
+ .filter-card{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-around;
+   min-width: 80px;
+   height: 100%;
+   background-color: var(--whitecolor);
+   color: var(--blackColor);
+   border-radius: 8px;
+   border: 1px solid var(--softGreenColor);
+   font-size: 14px;
+   cursor: pointer;
+ }
+ .filter-icon{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 80%;
+   height: 60%;
+   font-size: 30px;
+   background-color: var(--softGreenColor);
+   color: var(--primarycolor);
+   border-radius: 8px;
+ }
+ .filter-card:hover{
+   background-color: var(--primarycolor);
+   color: var(--whitecolor);
+ }
+ .filter-card:hover .filter-icon{
+   background-color: var(--whitecolor);
+ }
+ .divider{
+   margin: 1rem 0;
+   height: 1px;
+   width: 100%;
+   background-color: var(--primarycolor);
+   border: none;
+ }
+ .main-detail{
+   margin: 1rem 0 1.5rem 0;
+
+ }
+ .detail-wrapper{
+   display: grid;
+   grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+   width: 100%;
+   margin-top: 1rem;
+   gap: 2%;
+   border-radius: 8px;
+
+ }
+ .detail-card{
+   min-height: 280px;
+   height: 100%;
+   background-color: var(--softGreenColor);
+   border-radius: 8px;
+   margin: 1% 0;
+   box-shadow: rgba(176,176,176,0.2) 0px 2px 8px 0px;
+   cursor: pointer;
+ }
+ .detail-img{
+   width:100%;
+   height: 180px;
+   border-radius: 8px;
+   object-fit: cover;
+   object-position: center;
+   filter: brightness(0.8);
+ }
+ .detail-desc{
+   display: flex;
+   justify-content: space-between;
+   align-items: flex-start;
+   padding: 3%;
+   width: 100%;
+ }
+ .detail-sub{
+   font-size: 12px;
+   color: var(--blackColor);
+   letter-spacing: 0.5;
+   margin: 1% 0;
+ }
+ .price{
+   color: var(--primarycolor);
+   font-weight: bold;
+ }
+ .detail-favorites{
+   font-size: 24px;
+ }
+ .detail-card:hover{
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+ }
+ .detail-card:hover .detail-img{
+filter:opacity(1);
+ }
+ .detail-card:hover .detail-name h4{
+  color: var(--primarycolor);
+ }
+ .detail-card:hover .price{
+  letter-spacing: 1.5px;
+ }
+ .cart-count{
+  font-size: 13px;
+}
+
+.cart-popup{
+  display:none;
+  position: fixed;
+  height: auto;
+  max-width: 300px;
+  max-width: 300px;
+  top: 15%;
+  right: 1%;
+  background-color: var(--whitecolor);
+  font-size: 14px;
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 100;
+  box-shadow: rgb(14,98, 83,0.4) 0px 30px 90px;
+}
+.cart-popup.active{
+  display: block;
+}
+#cart-items {
+  margin-top: 10px;
+  font-size: 12px;
+  border-collapse:collapse;
+  width: 100%;
+
+}
+
+#cart-items th{
+  max-width: 50px;
+  background-color: var(--primarycolor);
+  color: var(--whitecolor);
+  padding: 5px;
+}
+#cart-items tr:nth-child(even){
+  background-color: var(--softGreenColor);
+}
+#cart-items td{
+  max-width: 50px;
+  padding: 5px;
+  text-align: right;
+}
+.cart-popup p{
+display: flex;
+justify-content: space-between;
+font-size: 12px;
+padding: 5px;
+font-weight: 600;
+}
+.cart-close{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 20px;
+  color: var(--blackColor);
+}
+
+.add-to-cart-btn{
+  width: 100%;
+  margin: 10px 0px 10px 5px;
+  background-color: var(--primarycolor);
+  border:none;
+  color: var(--whitecolor);
+  border-radius: 8px;
+  padding: 1px;
+  cursor: pointer;
+}
+.add-to-cart-btn:hover{
+  background-color: var(--secondarycolor);
+  color: var(--blackColor);
+  font-weight: bold;
+}
+
+
+ @media screen and (max-width:640px){
+  .sidebar{
+    display: none;
+  }
+  .main{
+    margin-left: 0;
+  }
+  .menu-toggle{
+    display: block;
+    text-decoration: none;
+    font-size: 20px;
+    background-color: var(--whitecolor);
+    color: var(--primarycolor);
+    display: flex;
+    justify-content: center;
+    padding: 0 10px;
+    height: 40px;
+    border-radius: 50%;
+    z-index: 3;
+  }
+  .sidebar.active{
+    display: flex;
+    z-index: 10;
+  }
+  }
+/* Popup styling */
+.popup {
+  display: none; 
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: var(--softGreenColor);
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.popup .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--primarycolor);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--secondarycolor);
+  color: var(--blackColor);
+  font-weight: bold;
+}
+
+p {
+  font-size: 14px;
+}
+
+a {
+  color: var(--primarycolor);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Small screens (max width: 600px) */
+@media (max-width: 600px) {
+  .popup-content {
+    width: 80%;
+    padding: 15px;
+  }
+
+  .popup .close-btn {
+    font-size: 18px;
+  }
+
+  input, button {
+    padding: 8px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+}
+
+/* Medium screens (max width: 1024px) */
+@media (max-width: 1024px) {
+  .popup-content {
+    width: 70%;
+    padding: 18px;
+  }
+
+  .popup .close-btn {
+    font-size: 19px;
+  }
+
+  input, button {
+    padding: 9px;
+  }
+
+  p {
+    font-size: 13px;
+  }
+}
+
+/* Close button (cross) */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 30px;
+  color:var(--primarycolor) ; /* Color for the cross symbol */
+  background: var(--softGreenColor);
+  font-weight: bolder;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Close button hover effect */
+.close-btn:hover {
+  color:var(--primarycolor); /* Change color to red on hover */
+  font-weight: bolder;
+  transform: scale(1.1); /* Slightly enlarge the cross when hovered */
+}
+
+@media screen and (max-width: 768px) {
+  /* Adjusting the main content layout for smaller screens */
+  .main {
+    width: 100%;
+    margin-left: 0;
+    padding: 1%;
+  }
+
+  /* Sidebar toggle functionality for better responsiveness */
+  .menu-toggle {
+    display: block;
+  }
+
+  .sidebar {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+  }
+
+  .sidebar.active {
+    display: flex;
+  }
+
+  /* Adjust logo image size */
+  .logo img {
+    width: 60%;
+  }
+
+  /* Make sidebar menu items more compact */
+  .sidebar-menu a, .sidebar-logout a {
+    padding: 3% 5%;
+    font-size: 14px;
+  }
+
+  /* Adjust search bar layout */
+  .search {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .search input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .search-btn {
+    width: 100%;
+  }
+
+  /* Simplify profile section for smaller screens */
+  .profile {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Adjust card layouts */
+  .highlight-wrapper,
+  .filter-wrapper {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding: 0.5rem;
+    gap: 1rem;
+  }
+
+  .highlight-card, .filter-card {
+    min-width: 150px;
+  }
+
+  /* Grid adjustments for details section */
+  .detail-wrapper {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .detail-card {
+    min-height: 240px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Further compact sidebar for extra small screens */
+  .sidebar-menu a, .sidebar-logout a {
+    padding: 2% 4%;
+    font-size: 12px;
+  }
+
+  /* Further simplify search bar */
+  .search input {
+    font-size: 14px;
+  }
+
+  .search-btn {
+    font-size: 14px;
+  }
+
+  /* Adjust detail card layout for small screens */
+  .detail-card {
+    min-height: 200px;
+  }
+
+  .detail-img {
+    height: 150px;
+  }
+} 
+ </style>
+
+
+<!--  html code of main page -->
+
+
+
+
+    <title>Food Time</title>
+</head>
+<body>
+       <div class="sidebar">
+        <div class="logo"><img src="./chef.png" alt=""></div>
+        <h1 class="logo-name">Golden Fork</h1>
+        <div class="sidebar-menu">
+            <a href="#"><ion-icon name="storefront-outline"></ion-icon>Home</a>
+            <a href="menu.html"><ion-icon name="person-outline"></ion-icon>Food Menu</a>
+            <a href="services.html"><ion-icon name="restaurant-outline"></ion-icon>services</a>
+            <a href="./review.html"><ion-icon name="star-outline"></ion-icon>Review</a>
+            <a href="about.html"><ion-icon name="information-circle-outline"></ion-icon>About Us</a>
+            <a href="./contact.html"><ion-icon name="call-outline"></ion-icon>Contact </a>
+        </div>
+        <div class="sidebar-logout">
+            <a href="#"><ion-icon name="log-out-outline"></ion-icon>logout</a>
+
+        </div>
+    </div>
+    <div class="main">
+        <div class="main-navbar">
+            <ion-icon class="menu-toggle" name="menu-outline"></ion-icon>
+            <div class="search">
+                <input type="text" placeholder="What you want to eat?">
+                <button class="search-btn"> Search</button>
+            </div>
+            <div class="profile">
+                <a  class="cart" href="#" onclick="toggleCartPopup();">
+                    <ion-icon name="cart-outline"></ion-icon>
+                    <span class="cart-count" id="cart-count">0</span>
+                </a>
+                <a class="user" href="#" onclick="openLoginPopup()"><ion-icon name="person-outline"></ion-icon> <span class="cart-count" id="cart-count">Login/Register</span></a>                  
+            </div>
+        </div>
+        <div id="cart-popup" class="cart-popup">
+            <h4>Food Cart</h4>
+            <table id="cart-items">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Price(₹)</th>   
+                        <th>Total(₹)</th>
+                    </tr>
+                </thead>
+                <tbody>
+            <!-- Dynamic rows will go here -->
+                </tbody>
+            </table>
+            <p>Total: ₹<span id="cart-total">0.00</span></p>
+            <a class="cart-close" onclick="closeCart();"><ion-icon name="close-circle-outline"></ion-icon></a>
+        </div>
+        <div class="main-highlight">
+            <div class="main-header">
+                <h2 class="main-title">Recommendations</h2>
+                <div class="main-arrow">
+                    <ion-icon class="back" name="chevron-back-circle-outline" onclick=""></ion-icon>
+                    <ion-icon class="next" name="chevron-forward-circle-outline" onclick=""></ion-icon>
+
+                </div>
+            </div>
+            <div class="highlight-wrapper">
+                <div class="highlight-card">
+                    <img  class="highlight-img" src="food menu/Appetizers/samosa.jpeg">
+                    <div class="highlight-desc">
+                        <h4>samosa</h4>
+                        <p>₹25</p>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <img  class="highlight-img" src="image/chilli potato.jpg">
+                    <div class="highlight-desc">
+                        <h4>chilli potato</h4>
+                        <p>₹120</p>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <img  class="highlight-img" src="image/burger1.png">
+                    <div class="highlight-desc">
+                        <h4>Big Burger</h4>
+                        <p>₹85</p>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <img  class="highlight-img" src="food menu/Drinks/rose lassi.jpeg">
+                    <div class="highlight-desc">
+                        <h4>Rose lassi</h4>
+                        <p>₹180</p>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <img  class="highlight-img" src="image/pasta.jpeg">
+                    <div class="highlight-desc">
+                        <h4>pasta</h4>
+                        <p>₹110</p>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <img  class="highlight-img" src="image/ramen.jpeg">
+                    <div class="highlight-desc">
+                        <h4>Spicy ramen</h4>
+                        <p>₹130</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-menus">
+            <div class="main-filter">
+                <div>
+                    <h2 class="main-title" style="color:  #800020;">Menu <br>Category</h2>
+                    <div class="main-arrow">
+                        <ion-icon class="back-menus" name="chevron-back-circle-outline" style="color:  #800020;"></ion-icon>
+                        <ion-icon class="next-menus" name="chevron-forward-circle-outline" style="color:  #800020;"></ion-icon>
+                    </div>
+                </div>
+                <div class="filter-wrapper">
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <ion-icon  name="restaurant-outline"><a href="menu.html"></a></ion-icon>
+                        </div>
+                        <p>All Menus</p>
+                    </div>
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <ion-icon  name="fast-food-outline"></ion-icon>
+                        </div>
+                        <p>Burger</p>
+                    </div>
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <ion-icon  name="pizza-outline"></ion-icon>
+                        </div>
+                        <P>Pizza</P>
+                    </div>
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <ion-icon  name="wine-outline"></ion-icon>
+                        </div>
+                        <p>Wine</p>
+                    </div>
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <ion-icon  name="ice-cream-outline"></ion-icon>
+                        </div>
+                        <p>Ice-Cream</p>
+                    </div>
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <ion-icon  name="cafe-outline"></ion-icon>
+                        </div>
+                        <p>coffee</p>
+                    </div>
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <ion-icon  name="fish-outline"></ion-icon>
+                        </div>
+                        <p>Sea Food</p>
+                    </div>
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <ion-icon  name="nutrition-outline"></ion-icon>
+                        </div>
+                        <p>Healthy Food</p>
+                    </div>
+                </div>
+            </div>
+            <hr class="divider">
+            <div class="main-detail">
+                <h2 class="main-title" style="color:  #800020;"> Choose order</h2>
+                <div class="detail-wrapper">
+                    <div class="detail-card">
+                        <img class="detail-img" src="image/burger1.png" alt="">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                                <h4 style="color:  #800020;">Classic Cheeseburger</h4>
+                                <p class="detail-sub">Beef patty with cheese, lettuce, tomato, onions, and condiments on a sesame bun.</p>
+                                <p class="price">₹85</p>
+                                <button class="add-to-cart-btn" onclick="addToCart('Cheeseburger',85); updateCartCountAndTotal();">Add To Cart</button>
+                            </div>
+                            <ion-icon class="detail-favorites"  name="bookmark-outline"></ion-icon>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="image/pizza.png" alt="">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                                <h4 style="color:  #800020;">Pepperoni Paradise</h4>
+                                <p class="detail-sub">pizza loaded with layers of spicy pepperoni, melted cheese, and a rich tomato sauce, all on a crispy crust</p>
+                                <p class="price">₹220</p>
+                                <button class="add-to-cart-btn" onclick="addToCart('Pepperoni Paradise',220); updateCartCountAndTotal();">Add To Cart</button>
+                            </div>
+                            <ion-icon class="detail-favorites"  name="bookmark-outline"></ion-icon>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="image/momos.jpg" alt="">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                                <h4 style="color:  #800020;">Panner momos</h4>
+                                <p class="detail-sub">Dumplings filled with spiced paneer, steamed or fried, served with a spicy sauce.</p>
+                                <p class="price">₹90</p>
+                                <button class="add-to-cart-btn" onclick="addToCart('Paneer momos',90); updateCartCountAndTotal();">Add To Cart</button>
+                            </div>
+                            <ion-icon class="detail-favorites"  name="bookmark-outline"></ion-icon>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="image/chilli potato.jpg" alt="">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                                <h4 style="color:  #800020;">chilli potato</h4>
+                                <p class="detail-sub">Golden-fried potato strips tossed in a spicy, tangy sauce with garlic and peppers</p>
+                                <p class="price">₹120</p>
+                                <button class="add-to-cart-btn" onclick="addToCart('chilli potato',120); updateCartCountAndTotal();">Add To Cart</button>
+                            </div>
+                            <ion-icon class="detail-favorites"  name="bookmark-outline"></ion-icon>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="image/manchurain.png" alt="Burger">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                                <h4 style="color:  #800020;">Manchurian</h4>
+                                <p class="detail-sub">Crispy vegetable balls tossed in a savory, spicy, and tangy sauce with garlic, soy, and spring onions</p>
+                                <p class="price">₹130</p>
+                                <button class="add-to-cart-btn" onclick="addToCart('manchurain',130); updateCartCountAndTotal();">Add To Cart</button>
+                            </div>
+                            <ion-icon class="detail-favorites"  name="bookmark-outline"></ion-icon>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="food menu/Vegetarian Main Courses/paneer butter masla.jpeg" alt="">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                                <h4 style="color:  #800020;">Panner butter masala</h4>
+                                <p class="detail-sub">Soft paneer in a rich, creamy tomato-butter gravy with aromatic spices!</p>
+                                <p class="price">₹230</p>
+                                <button class="add-to-cart-btn" onclick="addToCart('Paneer butter masala',230); updateCartCountAndTotal();">Add To Cart</button>
+                            </div>
+                            <ion-icon class="detail-favorites"  name="bookmark-outline"></ion-icon>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="food menu/Breads/tandori roti.jpeg" alt="">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                                <h4 style="color:  #800020;">tandori roti</h4>
+                                <p class="detail-sub">Traditional whole wheat flatbread cooked in a clay oven for a smoky flavor and soft, crisp texture!</p>
+                                <p class="price">₹45</p>
+                                <button class="add-to-cart-btn" onclick="addToCart('tandori roti',45); updateCartCountAndTotal();">Add To Cart</button>
+                            </div>
+                            <ion-icon class="detail-favorites"  name="bookmark-outline"></ion-icon>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="food menu/Rice & Biryanis/vegetable pulao .jpeg" alt="Burger">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                                <h4 style="color:  #800020;">vegetable pulao</h4>
+                                <p class="detail-sub">Fragrant basmati rice cooked with fresh vegetables, aromatic spices, and herbs</p>
+                                <p class="price">₹189</p>
+                                <button class="add-to-cart-btn" onclick="addToCart('vegetable pulao',90.55); updateCartCountAndTotal();">Add To Cart</button>
+                            </div>
+                            <ion-icon class="detail-favorites"  name="bookmark-outline"></ion-icon>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="food menu/Drinks/masla chai.jpeg" alt="Burger">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                                <h4 style="color:  #800020;">masala chai</h4>
+                                <p class="detail-sub">Aromatic Indian spiced tea brewed with milk, black tea, and a blend of warming spices</p>
+                                <p class="price">₹55</p>
+                                <button class="add-to-cart-btn" onclick="addToCart('masala Chai',55); updateCartCountAndTotal();">Add To Cart</button>
+                            </div>
+                            <ion-icon class="detail-favorites"  name="bookmark-outline"></ion-icon>
+                        </div>
+                    </div>
+                    
+            </div>
+        </div>
+    </div>
+
+
+    <!-- login popup -->
+
+    <div id="loginPopup" class="popup">
+        <div class="popup-content">
+          <!-- Cross symbol close button -->
+          <span class="close-btn" onclick="closeLoginPopup()">&times;</span>
+          
+          <div id="loginFormSection">
+            <h2 style="color: #800020;">Login</h2>
+            <form id="loginForm" onsubmit="event.preventDefault(); loginUser();">
+              <input type="email" id="loginUsername" name="username" required placeholder="Email">
+              <input type="password" id="loginPassword" name="password" required placeholder="Password">
+              <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#" onclick="toggleToRegister()">Register</a></p>
+          </div>
+      
+          <div id="registerFormSection" style="display: none;">
+            <h2 style="color: #800020;">Register</h2>
+            <form id="registerForm" onsubmit="event.preventDefault(); registerUser();">
+              <input type="number" id="registerUsername" name="username" required placeholder="Phone number">
+              <input type="email" id="registerEmail" name="email" required placeholder="Email">
+              <input type="password" id="registerPassword" name="password" required placeholder="Password">
+              <button type="submit">Register</button>
+            </form>
+            <p>Already have an account? <a href="#" onclick="toggleToLogin()">Login</a></p>
+          </div>
+        </div>
+      </div>
+      
+</body>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script>
+    const mobile = document.querySelector('.menu-toggle');
+const sidebar = document.querySelector('.sidebar');
+
+mobile.addEventListener("click", function () {
+    mobile.classList.toggle("is-active"); // Toggles the active class for menu toggle
+    sidebar.classList.toggle("active");  // Toggles the active class for sidebar
+});
+
+sidebar.addEventListener("click", function () {
+    if (window.innerWidth <= 768 && mobile.classList.contains("is-active")) {
+        mobile.classList.remove("is-active"); // Removes the active state from menu toggle
+        sidebar.classList.remove("active");  // Removes the active state from sidebar
+    }
+});
+
+var step=100;
+
+// Bind click events
+$(".back").bind("click", function(e) {
+    e.preventDefault();
+    $(".highlight-wrapper").animate({
+        scrollLeft: "-=" + step + "px"
+    });
+});
+
+$(".next").bind("click", function(e) {
+    e.preventDefault();
+    $(".highlight-wrapper").animate({
+        scrollLeft: "+=" + step + "px"
+    });
+});
+
+let stepfilter = 100; // Adjust to your preference
+
+// Bind click events
+$(".back-menus").bind("click", function(e) {
+    e.preventDefault();
+    $(".filter-wrapper").animate({
+        scrollLeft: "-=" + stepfilter + "px"
+    });
+});
+
+$(".next-menus").bind("click", function(e) {
+    e.preventDefault();
+    $(".filter-wrapper").animate({
+        scrollLeft: "+=" + stepfilter + "px"
+    });
+});
+
+// add item in cart
+function toggleCartPopup() {
+    const cartPopup = document.getElementById('cart-popup');
+    cartPopup.classList.toggle('active');
+}
+
+function closeCart() {
+    const cartPopup = document.getElementById('cart-popup');
+    cartPopup.classList.remove('active');
+}
+
+function addToCart(itemName, itemPrice) {
+    const cartItem = document.getElementById('cart-items').getElementsByTagName('tbody')[0];
+    const existingItem = Array.from(cartItem.getElementsByTagName('tr')).find(item => item.cells[0].textContent === itemName);
+
+    if (existingItem) {
+        const itemCount = parseInt(existingItem.querySelector('.item-count').textContent) + 1;
+        existingItem.querySelector('.item-count').textContent = itemCount;
+
+        const itemTotal = parseFloat(existingItem.querySelector('.item-total').textContent) + parseFloat(itemPrice);
+        existingItem.querySelector('.item-total').textContent = itemTotal.toFixed(2);
+    } else {
+        const newRow = cartItem.insertRow();
+        newRow.innerHTML = `
+            <td>${itemName}</td>
+            <td class='item-count'>1</td>
+            <td class='item-price'>${itemPrice}</td>
+            <td class='item-total'>${itemPrice}</td>
+        </tr>`;
+    }
+    updateCartCountAndTotal();
+}
+// upadate cart count and total
+
+function updateCartCountAndTotal() {
+    const cartCount = document.getElementById('cart-count');
+    const cartTotal = document.getElementById('cart-total');
+    const cartItems = document.querySelectorAll('#cart-items tbody tr');
+
+    let totalCount = 0;
+    let total = 0;
+
+    cartItems.forEach(item => {
+        const itemCount = parseInt(item.querySelector('.item-count').textContent) || 0;
+        const itemTotal = parseFloat(item.querySelector('.item-total').textContent) || 0;
+
+        totalCount += itemCount;
+        total += itemTotal;
+    });
+
+    cartCount.textContent = totalCount;
+    cartTotal.textContent = total.toFixed(2);
+}
+function openLoginPopup() {
+    document.getElementById('loginPopup').style.display = 'flex';
+  }
+  
+  function closeLoginPopup() {
+    document.getElementById('loginPopup').style.display = 'none';
+  }
+  
+  function toggleToRegister() {
+    document.getElementById('loginFormSection').style.display = 'none';
+    document.getElementById('registerFormSection').style.display = 'block';
+  }
+  
+  function toggleToLogin() {
+    document.getElementById('loginFormSection').style.display = 'block';
+    document.getElementById('registerFormSection').style.display = 'none';
+  }
+  
+  function loginUser() {
+    const username = document.getElementById('loginUsername').value;
+    const password = document.getElementById('loginPassword').value;
+  
+    // Perform the login logic here (e.g., check credentials, redirect, etc.)
+    alert(`Logged in as: ${username}`);
+    closeLoginPopup();
+  }
+  
+  function registerUser() {
+    const username = document.getElementById('registerUsername').value;
+    const email = document.getElementById('registerEmail').value;
+    const password = document.getElementById('registerPassword').value;
+  
+    // Perform the registration logic here (e.g., save user data, send to the server, etc.)
+    alert(`Registered as: ${username}`);
+    closeLoginPopup();
+  }
+  
+</script>
+
+
+
+</html>

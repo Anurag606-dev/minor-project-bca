@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="./logo.png"type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="about.css">
+    <style>
+        /* style.css */
+:root{
+    --primarycolor:  #800020;
+    --secondarycolor:#d2b48c;
+    --whitecolor: #fff;
+    --blackColor:#222;
+    --softGreenColor:#f4f1e1;
+    --darkGreyColor:#d9f2ee;
+    --greycolor: #f5f5f5;
+ }
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--greycolor);
+}
+
+header {
+    background: var(--primarycolor);
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: var(--whitecolor);
+    text-decoration: none;
+    font-size: 16px; /* Corrected from 14x to 16px */
+    padding: 10px 15px; /* Added padding for better click area */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover */
+    border-radius: 50px; /* Rounded corners for all links */
+}
+
+nav ul li a:hover {
+    background-color: var(--secondarycolor);
+    color: var(--blackColor);
+    transform: translateY(-2px); /* Slight upward movement on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+}
+
+section {
+    padding: 20px;
+    margin: 20px;
+    background:var(--greycolor);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+#about-section h2{
+color:var(--primarycolor);
+}
+#about-section p{
+    font-family: sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: rgb(87, 85, 85);
+}
+
+#team {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.team-member {
+    text-align: center;
+    margin: 20px;
+}
+.team-member h3{
+    color: var(--primarycolor);
+}
+.team-member p{
+color: var(--blackColor);
+font-weight: bold;
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+button {
+    padding: 10px;
+    background:var(--secondarycolor);
+    color: var(--blackColor);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease; /* Smooth transition for button hover */
+}
+
+button:hover {
+    background: var(--primarycolor);
+    color: var(--whitecolor);
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background:var(--primarycolor);
+    color: #fff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+/* Responsive styles */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 10px;
+        text-align: center;
+    }
+
+    nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0;
+    }
+
+    nav ul li {
+        margin: 5px 10px;
+        display: block;
+    }
+
+    nav ul li a {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    #team {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team-member {
+        margin: 15px 0;
+        text-align: center;
+    }
+
+    .team-member img {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    section {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    nav ul li a {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .team-member img {
+        width: 100px;
+        height: 100px;
+    }
+
+    footer {
+        font-size: 12px;
+        padding: 8px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>About Us</h1>
+        <nav>
+            <ul>
+                <li><a href="main.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="review.html">Reviews</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about-section">
+        <h2>Our Story</h2>
+        <p>The story of <b>[Golden Fork]</b> started with our founder, <b>[Anurag]</b>, who grew up in a family that cherished home-cooked meals and gathered around the table to share stories, laughter, and love. <br>Inspired by the vibrant culinary traditions passed down through generations, dreamt of creating a space where people could experience the same warmth and joy.
+            With a heart full of dreams and recipes collected from family members, <b> [Anurag, Amit, Ritika Singh] </b> opened the doors of <b>[Golden Fork]</b>.</p>
+        
+        <h2>Our Mission</h2>
+        <p>At Our Restaurant, our mission is to serve high-quality meals in a warm and inviting atmosphere. We believe that food is not just about sustenance; it is about bringing people together.</p>
+        
+        <h2>Meet Our Team</h2>
+        <div id="team">
+            <div class="team-member">
+                <img src="image/me-removebg-preview.png" alt="Chef John" />
+                <h3>Anurag</h3>
+                <p>Team-member</p>
+            </div>
+            <div class="team-member">
+                <img src="image/3-removebg-preview.png" alt="Chef Sarah" />
+                <h3>Amit</h3>
+                 <p>Team-member</p>
+            </div>
+            <div class="team-member">
+                <img src="./image/a-removebg-preview.png" alt="Manager Mike" />
+                <h3>Ritika Singh</h3>
+                <p>Team-member</p>
+            </div>
+        </div>
+
+        <h2>Join Us!</h2>
+        <button id="joinButton">Join Our Newsletter</button>
+        <div id="newsletter" style="display:none;">
+            <input type="email" id="emailInput" placeholder="Enter your email" />
+            <button id="subscribeButton">Subscribe</button>
+            <p id="subscribeMessage"></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Our Restaurant. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('joinButton').addEventListener('click', function() {
+    const newsletter = document.getElementById('newsletter');
+    newsletter.style.display = newsletter.style.display === 'none' ? 'block' : 'none';
+});
+
+document.getElementById('subscribeButton').addEventListener('click', function() {
+    const emailInput = document.getElementById('emailInput');
+    const subscribeMessage = document.getElementById('subscribeMessage');
+
+    if (emailInput.value) {
+        subscribeMessage.textContent = 'Thank you for subscribing!';
+        subscribeMessage.style.color = 'green';
+        emailInput.value = ''; // Clear the input
+    } else {
+        subscribeMessage.textContent = 'Please enter a valid email address.';
+        subscribeMessage.style.color = 'red';
+    }
+});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Restaurant</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="services.css">
+    <!-- Custom CSS -->
+    <style>
+       :root{
+    --primarycolor:  #800020;
+    --secondarycolor:#d2b48c;
+    --whitecolor: #fff;
+    --blackColor:#222;
+    --softGreenColor:#f4f1e1;
+    --darkGreyColor:#d9f2ee;
+    --greycolor: #f5f5f5;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: var(--blackColor);
+    background-color: var(--greycolor);
+}
+
+header {
+    background: var(--primarycolor);
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: var(--whitecolor);
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 50px;
+}
+
+nav ul li a:hover {
+    text-decoration: none;
+    background-color: var(--secondarycolor);
+    color: var(--blackColor);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+}
+
+/* Card Styling */
+.service-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+}
+
+.service-card img {
+    height: 150px;
+    object-fit: cover;
+}
+
+.service-card .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 8px;
+}
+
+.service-card {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.service-card:hover .card-img-top {
+    transform: scale(1.1);
+    filter: brightness(0.8);
+}
+
+.learn-more-btn {
+    background-color: #800020;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.learn-more-btn:hover {
+    background-color: #d2b48c;
+    color: #222;
+}
+
+.modal-header, .btn-primary {
+    background-color: var(--primarycolor) !important;
+    color: var(--whitecolor) !important;
+    border-radius: 8px;
+}
+
+.modal-header, .btn-primary:hover {
+    background-color: var(--secondarycolor);
+    color: var(--blackColor);
+}
+
+.learn-more-btn {
+    background-color: var(--primarycolor);
+    color: var(--whitecolor);
+    border: none;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 8px;
+}
+
+.learn-more-btn:hover {
+    background-color: var(--secondarycolor);
+    color: var(--blackColor);
+    font-weight: bold;
+}
+
+.row, .col-md-4 img{
+    border-radius: 8px;
+}
+
+footer {
+    background-color: var(--primarycolor);
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+/* Media Queries for responsiveness */
+
+/* For tablets (max-width: 768px) */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 0;
+    }
+
+    nav ul li {
+        display: inline-flex;
+        margin: 10px 0;
+    }
+
+    nav ul li a {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    .service-card img {
+        height: 200px; /* Adjusting image height for smaller screens */
+    }
+
+    .service-card {
+        margin-bottom: 15px; /* Adds space between cards */
+    }
+
+    .learn-more-btn {
+        width: 100%;
+        font-size: 14px;
+        padding: 12px;
+    }
+}
+
+/* For mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+    header {
+        padding: 10px 0;
+    }
+
+    nav ul li a {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    .service-card img {
+        height: 180px; /* Adjusting image height further for smaller screens */
+    }
+
+    .learn-more-btn {
+        width: 100%;
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    footer {
+        font-size: 14px;
+    }
+}
+
+      
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Our Services</h1>
+        <nav>
+            <ul>
+                <li><a href="main.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="review.html">Reviews</a></li>
+
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container my-5">
+        <!-- Services Section -->
+        <section id="services" class="text-center">
+            <div class="row">
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card service-card">
+                        <img src="./image/dine-in.jpeg" class="card-img-top" alt="Dine-In">
+                        <div class="card-body">
+                            <h5 class="card-title">Dine-In</h5>
+                            <p class="card-text">Enjoy a delightful dining experience with our exquisite menu.</p>
+                            <a href="Dine-in.html"><button class="learn-more-btn" data-toggle="modal" data-target="#serviceModal" data-service="Dine-In">Get Dine-In</button></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card service-card">
+                        <img src="./image/order.jpeg" class="card-img-top" alt="Get Online order">
+                        <div class="card-body">
+                            <h5 class="card-title">Takeaway</h5>
+                            <p class="card-text">Order your favorite dishes and enjoy them at home.</p>
+                            <a href="takeway.html"><button class=" learn-more-btn" data-toggle="modal" data-target="#serviceModal" data-service="Takeaway">Get online Order</button></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card service-card">
+                        <img src="./image/catering.png" class="card-img-top" alt="Catering">
+                        <div class="card-body">
+                            <h5 class="card-title">Catering</h5>
+                            <p class="card-text">Let us cater your next event with our delicious food.</p>
+                            <a href="catering.html"><button class="learn-more-btn" data-toggle="modal" data-target="#serviceModal" data-service="Catering">Get Catering</button></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card service-card">
+                        <img src="./image/giftcard.png" class="card-img-top" alt="Online Ordering">
+                        <div class="card-body">
+                            <h5 class="card-title">Online Ordering</h5>
+                            <p class="card-text">Order online and get your food delivered to your doorstep.</p>
+                           <a href="Giftcard.html"> <button class="learn-more-btn" data-toggle="modal" data-target="#serviceModal" data-service="Online Ordering">Get Gift card</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Featured Dishes Section -->
+        <section class="featured-dishes text-center">
+            <h2 style="color: var(--primarycolor);">Featured Dishes</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="image-container">
+                        <img src="./image/pasta.jpeg" class="img-fluid mb-3" alt="Dish 1">
+                    </div>
+                    <h5>Signature Pasta</h5>
+                    <p>Rich, creamy, and full of flavor.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="image-container">
+                        <img src="./image/ramen.jpeg" class="img-fluid mb-3" alt="Dish 2">
+                    </div>
+                    <h5>Spicy Ramen</h5>
+                    <p>A perfect blend of spice and flavor.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="image-container">
+                        <img src="image/chesse.jpeg" class="img-fluid mb-3" alt="Dish 3">
+                    </div>
+                    <h5>Cheeseburger Deluxe</h5>
+                    <p>Juicy, savory, and unforgettable.</p>
+                </div>
+                                                  
+            </div>
+        </section>
+
+        <!-- Customer Reviews Section -->
+        <section class="reviews text-center">
+            <h2>What Our Customers Say</h2>
+            <p>"The food was amazing, and the atmosphere was perfect for a night out!" - Jane Doe</p>
+            <p>"Absolutely loved the variety on the menu. A must-visit!" - John Smith</p>
+            <p>"Great service and delicious food! Will definitely come again." - Sarah Lee</p>
+        </section>
+    </main>
+
+    <footer>
+        <p style="color: white;">&copy; 2025 Our Restaurant. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("contact-form");
+    const successMessage = document.getElementById("success-message");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Create a FormData object from the form
+        const formData = new FormData(form);
+
+        // Send the form data using Fetch API
+        fetch(form.action, {
+            method: "POST",
+            body: formData,
+        })
+        .then(response => {
+            if (response.ok) {
+                // Show success message
+                successMessage.style.display = "block";
+
+                // Reset the form fields
+                form.reset();
+
+                // Hide the success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.style.display = "none";
+                }, 5000);
+            } else {
+                throw new Error('Network response was not ok.');
+            }
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+            alert('There was a problem sending your message. Please try again.');
+        });
+    });
+});
+
+    </script>
+</body>
+</html>
